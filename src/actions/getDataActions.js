@@ -8,7 +8,6 @@ export const loadPerrosRandom = () => async (dispatch) => {
     const dataCasi = await response.json();
     const data = dataCasi.message;
     dispatch({ type: types.loadPerrosRandom, payload: data });
-    dispatch();
   } catch (error) {
     console.log('Fetch Error', error);
   };

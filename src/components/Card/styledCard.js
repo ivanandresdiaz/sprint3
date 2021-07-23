@@ -21,7 +21,7 @@ export const ImgCard = styled.img`
 animation: 1s ${fadeInKeyframes} ease;
 width:100%;
 cursor: pointer;
-height:100%;
+height:260px;
 object-fit: cover;
 object-position: center;
 border-radius:25px;

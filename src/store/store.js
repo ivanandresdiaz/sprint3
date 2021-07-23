@@ -1,5 +1,6 @@
+/* eslint-disable import/prefer-default-export */
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
+import reduxThunk from 'redux-thunk';
 import { loggedReducer } from '../reducers/loggedReducer';
 import { storagePerrosReducer } from '../reducers/storagePerrosReducer';
 
@@ -11,9 +12,9 @@ const reducers = combineReducers({
 });
 
 const store = createStore(
-  reducers,
+  reducers, {},
   composeEnhancers(
-    applyMiddleware(thunk),
+    applyMiddleware(reduxThunk),
   ),
 );
 export default store;

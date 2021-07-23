@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,12 +24,13 @@ const Home = () => {
   useEffect(() => {
     dispatch(loadPerrosRandom());
   }, []);
+  console.log('perros Random', perrosRandom);
   const addFavoritos = () => {};
   return (
     <div>
       <Header name={name} handleCerrarSesion={handleCerrarSesion} />
       <DivContainerCards>
-        {perrosRandom && perrosRandom.map((perro) => <Card key={perro.id} perro={perro} addFavoritos={addFavoritos} />)}
+        {perrosRandom && perrosRandom.map((perro, index) => <Card key={`perroRandom${index}`} perro={perro} addFavoritos={addFavoritos} id={index} />)}
       </DivContainerCards>
     </div>
   );
