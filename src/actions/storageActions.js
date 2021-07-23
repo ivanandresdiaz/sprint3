@@ -16,7 +16,7 @@ export const addFavorite = (ImagennuevoPerro, nombre) => async (dispatch, getSta
       alert('Agregado a favoritos');
     }
   } catch (error) {
-    alert('no se puedo agregar a favoritos, intente de nuevo');
+    alert('no se puedo agregar a favoritos, intente de nuevo...');
   };
 
 };
