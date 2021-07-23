@@ -1,8 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import Login from '../containers/Login';
-import Register from '../containers/Register';
+import Login from '../containers/Login/Login';
+import Register from '../containers/Register/Register';
 
 export const AuthRouter = () => {
   return (
