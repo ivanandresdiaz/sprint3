@@ -23,7 +23,7 @@ const Header = (props) => {
       </Link>
       <DivItemNav onClick={handleCerrarSesion}>
         <FcNoIdea size='4rem' />
-        <p>Cerrar  sesion ahora</p>
+        <p>Cerrar  sesion</p>
       </DivItemNav>
     </HeaderNav>
   );
