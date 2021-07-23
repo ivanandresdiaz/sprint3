@@ -12,7 +12,7 @@ const Header = (props) => {
       </h1>
 
       <div onClick={handleCerrarSesion}>
-        <h1>Cerrar  sesion</h1>
+        <h1>Cerrar  sesion ahora</h1>
         <FcNoIdea size='4rem' />
       </div>
     </DivContainerHeader>
