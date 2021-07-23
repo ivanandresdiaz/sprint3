@@ -1,21 +1,31 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FcNoIdea } from 'react-icons/fc';
-import { DivContainerHeader } from './styledHeader';
+import { MdFavorite, MdHome } from 'react-icons/md';
+import { DivItemNav, HeaderNav } from './styledHeader';
 
 const Header = (props) => {
   const { name, handleCerrarSesion } = props;
   return (
-    <DivContainerHeader>
-      <h1>
-        {name && `Bienvenido al Home  ${name}`}
-      </h1>
-
-      <div onClick={handleCerrarSesion}>
-        <h1>Cerrar  sesion ahora</h1>
+    <HeaderNav>
+      <Link to='/'>
+        <DivItemNav>
+          <MdHome />
+          {name && `Home ${name}`}
+        </DivItemNav>
+      </Link>
+      <Link to='/favoritos'>
+        <DivItemNav>
+          <MdFavorite />
+          Favoritos
+        </DivItemNav>
+      </Link>
+      <DivItemNav onClick={handleCerrarSesion}>
         <FcNoIdea size='4rem' />
-      </div>
-    </DivContainerHeader>
+        <p>Cerrar  sesion ahora</p>
+      </DivItemNav>
+    </HeaderNav>
   );
 };
 
