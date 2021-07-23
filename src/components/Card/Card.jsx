@@ -15,7 +15,7 @@ const Card = (props) => {
         <ImgCard src={perro} alt={`perro${id}`} />
       </DivContainerImg>
       <DivCardDetails className='card_details'>
-        <NameCharacter className='name_character'>{`perro${id}`}</NameCharacter>
+        <NameCharacter className='name_character'>{`Mascota Numero ${id}`}</NameCharacter>
       </DivCardDetails>
       <DivAddFavorite onClick={() => {
         addFavoritos(perro);
