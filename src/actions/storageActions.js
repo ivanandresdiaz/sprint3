@@ -1,13 +1,22 @@
 /* eslint-disable import/prefer-default-export */
-import { db } from '../firebase/firebaseconfig';
+import { db, firebase } from '../firebase/firebaseconfig';
 import { types } from '../types';
 
-export const addFavorite = (nuevoPerro, nombre) => async (dispatch) => {
+export const addFavorite = (ImagennuevoPerro, nombre) => async (dispatch, getState) => {
   try {
-    console.log(nuevoPerro, nombre);
-    // await db.collection('mascotas').add(nuevoPerro, nombre);
+    const usuario = getState().logged.name;
+    const referenciaDocumento = await db.collection('mascotas').add({
+      cover: ImagennuevoPerro,
+      dueño: usuario,
+      nombre,
+      fecha: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    if (referenciaDocumento) {
+      console.log(referenciaDocumento);
+      alert('Agregado a favoritos');
+    }
   } catch (error) {
-    console.log('erro agregar FAVORITO', error);
+    alert('no se puedo agregar a favoritos, intente de nuevo');
   };
 
 };
