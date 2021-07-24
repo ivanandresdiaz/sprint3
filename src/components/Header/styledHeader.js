@@ -34,6 +34,7 @@ export const DivItemNav = styled.div`
   display: flex;
   justify-content:center;
   align-items:center;
+  height: 70px;
  p{ 
   color:#615F67;
   text-decoration:none;
