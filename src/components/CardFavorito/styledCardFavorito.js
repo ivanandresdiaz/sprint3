@@ -63,8 +63,8 @@ export const DivAddFavorite = styled.div`
 position:absolute;
 top: 20px;
 right: 20px;
-min-height:35px;
-min-width:35px;
+min-height:50px;
+min-width:50px;
 border-radius:50%;
 border: 1px solid white;
 display: flex;
