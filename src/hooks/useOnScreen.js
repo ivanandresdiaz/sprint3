@@ -13,7 +13,6 @@ const useOnScreen = (options) => {
     }
     return () => {
       if (ref.current) {
-        console.log('se ejecuto el unobserve');
         observer.unobserve(ref.current);
       }
     };

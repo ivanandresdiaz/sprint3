@@ -5,7 +5,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { FcGoogle, FcInvite } from 'react-icons/fc';
-import { loginGoogle, loginEmailPassword } from '../../actions/authActions';
+import { ImFacebook2 } from 'react-icons/im';
+import { loginGoogle, loginFacebook, loginEmailPassword } from '../../actions/authActions';
 import { DivContainerLogin, ContainerLogin } from './styledLogin';
 
 const Login = (props) => {
@@ -23,6 +24,9 @@ const Login = (props) => {
   };
   const handleLoginGoogle = () => {
     dispatch(loginGoogle());
+  };
+  const handleLoginFacebook = () => {
+    dispatch(loginFacebook());
   };
   return (
     <DivContainerLogin>
@@ -43,6 +47,11 @@ const Login = (props) => {
           <FcGoogle size='4rem' />
           {' '}
           Ingresa con Google
+        </div>
+        <div onClick={handleLoginFacebook}>
+          <ImFacebook2 size='4rem' color='blue' />
+          {' '}
+          ingresa con Facebook
         </div>
         <Link to='/auth/register'>
           Registrate con Correo

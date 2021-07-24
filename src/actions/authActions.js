@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { types } from '../types';
-import { firebase, googleAuthProvider } from '../firebase/firebaseconfig';
+import { firebase, googleAuthProvider, facebookAuthProvider } from '../firebase/firebaseconfig';
 
 export const login = (uid, displayName) => {
   return {
@@ -31,6 +31,15 @@ export const loginEmailPassword = (email, password) => {
 export const loginGoogle = () => {
   return (dispatch) => {
     firebase.auth().signInWithPopup(googleAuthProvider)
+      .then(({ user }) => {
+        console.log(user);
+        dispatch(login(user.uid, user.displayName));
+      }).catch((err) => { console.log('error', err); });
+  };
+};
+export const loginFacebook = () => {
+  return (dispatch) => {
+    firebase.auth().signInWithPopup(facebookAuthProvider)
       .then(({ user }) => {
         console.log(user);
         dispatch(login(user.uid, user.displayName));
