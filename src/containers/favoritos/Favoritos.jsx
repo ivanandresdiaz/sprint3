@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { consultarFavoritos } from '../../actions/storageActions';
+import { consultarFavoritos, getFavoritos } from '../../actions/storageActions';
 import Header from '../../components/Header/Header';
 import { getPerrosFavoritos } from '../../reducers/storagePerrosReducer';
 import { getName } from '../../reducers/loggedReducer';
@@ -17,7 +17,6 @@ const Favoritos = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-
     if (perrosFavoritos.length === 0) {
       console.log('se mando a llamar el favoritos');
       dispatch(consultarFavoritos());
@@ -29,6 +28,7 @@ const Favoritos = () => {
     },
     [name],
   );
+  console.log(perrosFavoritos);
   return (
     <div>
       <Header name={name} handleCerrarSesion={handleCerrarSesion} />
@@ -39,7 +39,7 @@ const Favoritos = () => {
       ) : (
         <>
           <DivContainerCards>
-            {perrosFavoritos.map((perro, index) => <CardFavorito key={`${perro.name}${index}`} perro={perro.cover} nombre={perro.nombre} />)}
+            {perrosFavoritos.map((perro, index) => <CardFavorito key={perro.id} perro={perro.cover} nombre={perro.nombre} id={perro.id} />)}
           </DivContainerCards>
         </>
       )}
