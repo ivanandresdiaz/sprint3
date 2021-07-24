@@ -1,6 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useOnScreen from '../../hooks/useOnScreen';
 import { loadPerrosRandom } from '../../actions/getDataActions';
@@ -15,8 +15,7 @@ import Spinner from '../../components/Spinner';
 const Home = () => {
   const name = useSelector(getName);
   const perrosRandom = useSelector(getPerrosRandom);
-  const ref = useRef();
-  const onScreen = useOnScreen(ref, '-20px');
+  const [ref, visible] = useOnScreen({ threshold: 0.2 });
   const dispatch = useDispatch();
   const handleCerrarSesion = useCallback(
     () => {
@@ -24,11 +23,12 @@ const Home = () => {
     },
     [name],
   );
+
   useEffect(() => {
-    if (onScreen) {
+    if (visible) {
       dispatch(loadPerrosRandom());
     }
-  }, [onScreen]);
+  }, [visible]);
 
   return (
     <div>

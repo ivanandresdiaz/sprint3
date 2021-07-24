@@ -1,18 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
-const useOnScreen = (ref, rootMargin = '0px') => {
-  const [isIntersecting, setIntersecting] = useState(false);
+const useOnScreen = (options) => {
+  const ref = useRef();
+  const [visible, setVisible] = useState(false);
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
-      setIntersecting(entry.isIntersecting);
-    }, { rootMargin });
-    if (ref.current) {
+      setVisible(entry.isIntersecting);
+    }, options);
+
+    if (ref) {
       observer.observe(ref.current);
     }
     return () => {
-      observer.unobserve(ref.current);
+      if (ref.current) {
+        console.log('se ejecuto el unobserve');
+        observer.unobserve(ref.current);
+      }
     };
-  }, []);
-  return isIntersecting;
+  }, [ref, options]);
+  return [ref, visible];
 };
 export default useOnScreen;

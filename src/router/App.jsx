@@ -14,6 +14,7 @@ import { login } from '../actions/authActions';
 import { AuthRouter } from './AuthRouter';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
+import Favoritos from '../containers/favoritos/Favoritos';
 
 const App = () => {
 
@@ -45,6 +46,12 @@ const App = () => {
             exact
             path='/'
             component={Home}
+            isAuthenticated={isLooged}
+          />
+          <PrivateRoute
+            exact
+            path='/favoritos'
+            component={Favoritos}
             isAuthenticated={isLooged}
           />
 
